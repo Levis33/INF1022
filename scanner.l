@@ -25,4 +25,4 @@ FIM         return (FIM);
 "("         return (AP);
 ")"         return (FP);
 "="         return (IGUAL);
-[a-zA-Z]    return {yylval.sval = strdup(yytext); return (ID);}
+[a-zA-Z]+    return {yylval.sval = strdup(yytext); return (ID);}
