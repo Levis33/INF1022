@@ -71,11 +71,8 @@
 
 
     /*
-
     Bruno Coutinho -
     Thiago Levis Alamber Rodrigues - 1812899
-
-
     */
 
 	#include <stdio.h>
@@ -88,7 +85,7 @@
             fprintf(stderr, "%s\n", s);
     };
 
-#line 92 "trabalho.tab.c"
+#line 89 "trabalho.tab.c"
 
 # ifndef YY_CAST
 #  ifdef __cplusplus
@@ -526,8 +523,8 @@ static const yytype_int8 yytranslate[] =
 /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_int8 yyrline[] =
 {
-       0,    46,    46,    62,    68,    75,    80,    85,    92,    97,
-     102,   107,   112,   117
+       0,    43,    43,    59,    65,    72,    77,    82,    89,    94,
+      99,   104,   109,   114
 };
 #endif
 
@@ -1108,15 +1105,15 @@ yyreduce:
   switch (yyn)
     {
   case 2: /* program: ENTRADA varlist SAIDA varlist cmds FIM  */
-#line 46 "trabalho.y"
+#line 43 "trabalho.y"
                                                  {
     FILE *f = fopen("saida.c", "w");
     if (f == NULL){
         exit(1);
     } 
 
-    char *result = malloc(strlen((yyvsp[-4].num)) + strlen((yyvsp[-2].num)) + strlen((yyvsp[-1].num)) + 42);
-    sprintf(result, "int saida(int %s){\n\tint %s;\n\t%s\t\n\treturn %s;\n}", (yyvsp[-4].num), (yyvsp[-2].num), (yyvsp[-1].num), (yyvsp[-2].num));
+    char *result = malloc(strlen((yyvsp[-4].str)) + strlen((yyvsp[-2].str)) + strlen((yyvsp[-1].str)) + 42);
+    sprintf(result, "int saida(int %s){\n\tint %s;\n\t%s\t\n\treturn %s;\n}", (yyvsp[-4].str), (yyvsp[-2].str), (yyvsp[-1].str), (yyvsp[-2].str));
     fprintf(f, "%s", result);
     fclose(f);
 
@@ -1124,119 +1121,119 @@ yyreduce:
 
     exit(0);
 }
-#line 1128 "trabalho.tab.c"
+#line 1125 "trabalho.tab.c"
     break;
 
   case 3: /* varlist: varlist ID  */
-#line 62 "trabalho.y"
+#line 59 "trabalho.y"
                      {
 
-    char *result = malloc(strlen((yyvsp[-1].num)) + strlen((yyvsp[0].num)) + 6);
-    sprintf(result, "%s, int %s", (yyvsp[-1].num), (yyvsp[0].num));
-    (yyval.num) = result;
+    char *result = malloc(strlen((yyvsp[-1].str)) + strlen((yyvsp[0].str)) + 6);
+    sprintf(result, "%s, int %s", (yyvsp[-1].str), (yyvsp[0].str));
+    (yyval.str) = result;
   }
-#line 1139 "trabalho.tab.c"
+#line 1136 "trabalho.tab.c"
     break;
 
   case 4: /* varlist: ID  */
-#line 68 "trabalho.y"
+#line 65 "trabalho.y"
        {
-		(yyval.num) = (yyvsp[0].num);
+		(yyval.str) = (yyvsp[0].str);
 	}
-#line 1147 "trabalho.tab.c"
+#line 1144 "trabalho.tab.c"
     break;
 
   case 5: /* cmds: cmd cmds  */
-#line 75 "trabalho.y"
+#line 72 "trabalho.y"
                 {
-    char *result = malloc(strlen((yyvsp[-1].num)) + strlen((yyvsp[0].num)) + 1);
-    sprintf(result, "%s %s", (yyvsp[-1].num), (yyvsp[0].num));
-    (yyval.num) = result;
+    char *result = malloc(strlen((yyvsp[-1].str)) + strlen((yyvsp[0].str)) + 1);
+    sprintf(result, "%s %s", (yyvsp[-1].str), (yyvsp[0].str));
+    (yyval.str) = result;
   }
-#line 1157 "trabalho.tab.c"
+#line 1154 "trabalho.tab.c"
     break;
 
   case 6: /* cmds: cmd  */
-#line 80 "trabalho.y"
+#line 77 "trabalho.y"
         {
-        (yyval.num) = (yyvsp[0].num);
+        (yyval.str) = (yyvsp[0].str);
     }
-#line 1165 "trabalho.tab.c"
+#line 1162 "trabalho.tab.c"
     break;
 
   case 7: /* cmd: ENQUANTO ID FACA cmds FIM  */
-#line 85 "trabalho.y"
+#line 82 "trabalho.y"
                                 {
-    char *result = malloc(strlen((yyvsp[-3].num)) + strlen((yyvsp[-1].num)) + 17);
-    sprintf(result,"while(%s){\n\t%s}\n", (yyvsp[-3].num), (yyvsp[-1].num));
-    (yyval.num) = result;
+    char *result = malloc(strlen((yyvsp[-3].str)) + strlen((yyvsp[-1].str)) + 17);
+    sprintf(result,"while(%s){\n\t%s}\n", (yyvsp[-3].str), (yyvsp[-1].str));
+    (yyval.str) = result;
 
     }
-#line 1176 "trabalho.tab.c"
+#line 1173 "trabalho.tab.c"
     break;
 
   case 8: /* cmd: INC AP ID FP  */
-#line 92 "trabalho.y"
+#line 89 "trabalho.y"
                    {
-        char * result = malloc(strlen((yyvsp[-1].num)) + 8);
-        sprintf(result, "%s += 1;\n", (yyvsp[-1].num));
-        (yyval.num) = result;
+        char * result = malloc(strlen((yyvsp[-1].str)) + 8);
+        sprintf(result, "%s += 1;\n", (yyvsp[-1].str));
+        (yyval.str) = result;
 		}
-#line 1186 "trabalho.tab.c"
+#line 1183 "trabalho.tab.c"
     break;
 
   case 9: /* cmd: ID IGUAL ID  */
-#line 97 "trabalho.y"
+#line 94 "trabalho.y"
                   {
-        char *result =malloc(strlen((yyvsp[-2].num)) + strlen((yyvsp[0].num)) + 6);
-        sprintf(result, "%s = %s;\n", (yyvsp[-2].num), (yyvsp[0].num)); 
-		(yyval.num) = result;
+        char *result =malloc(strlen((yyvsp[-2].str)) + strlen((yyvsp[0].str)) + 6);
+        sprintf(result, "%s = %s;\n", (yyvsp[-2].str), (yyvsp[0].str)); 
+		(yyval.str) = result;
 		}
-#line 1196 "trabalho.tab.c"
+#line 1193 "trabalho.tab.c"
     break;
 
   case 10: /* cmd: ZERA AP ID FP  */
-#line 102 "trabalho.y"
+#line 99 "trabalho.y"
                     { 
-        char *result=malloc(strlen((yyvsp[-1].num)) + 7);
-        sprintf(result, "%s = 0;\n", (yyvsp[-1].num));
-		(yyval.num) = result; 
+        char *result=malloc(strlen((yyvsp[-1].str)) + 7);
+        sprintf(result, "%s = 0;\n", (yyvsp[-1].str));
+		(yyval.str) = result; 
 		}
-#line 1206 "trabalho.tab.c"
+#line 1203 "trabalho.tab.c"
     break;
 
   case 11: /* cmd: SE ID ENTAO cmds FIM  */
-#line 107 "trabalho.y"
+#line 104 "trabalho.y"
                           {
-        char *result = malloc(strlen((yyvsp[-3].num)) + strlen((yyvsp[-1].num)) + 9);
-        sprintf(result, "if(%s){\n\t%s}", (yyvsp[-3].num), (yyvsp[-1].num));
-        (yyval.num) = result;
+        char *result = malloc(strlen((yyvsp[-3].str)) + strlen((yyvsp[-1].str)) + 9);
+        sprintf(result, "if(%s){\n\t%s}", (yyvsp[-3].str), (yyvsp[-1].str));
+        (yyval.str) = result;
     }
-#line 1216 "trabalho.tab.c"
+#line 1213 "trabalho.tab.c"
     break;
 
   case 12: /* cmd: SE ID ENTAO cmds SENAO cmds FIM  */
-#line 112 "trabalho.y"
+#line 109 "trabalho.y"
                                      {
-        char *result = malloc(strlen((yyvsp[-5].num)) + strlen((yyvsp[-3].num)) + strlen((yyvsp[-1].num)) + 25);
-        sprintf(result, "if(%s){\n\t%s\t}\n\telse{\n\t\t%s}", (yyvsp[-5].num), (yyvsp[-3].num), (yyvsp[-1].num));
-        (yyval.num) = result;
+        char *result = malloc(strlen((yyvsp[-5].str)) + strlen((yyvsp[-3].str)) + strlen((yyvsp[-1].str)) + 25);
+        sprintf(result, "if(%s){\n\t%s\t}\n\telse{\n\t\t%s}", (yyvsp[-5].str), (yyvsp[-3].str), (yyvsp[-1].str));
+        (yyval.str) = result;
     }
-#line 1226 "trabalho.tab.c"
+#line 1223 "trabalho.tab.c"
     break;
 
   case 13: /* cmd: FACA ID VEZES cmds FIM  */
-#line 117 "trabalho.y"
+#line 114 "trabalho.y"
                             {
-        char *result = malloc(strlen((yyvsp[-3].num)) + strlen((yyvsp[-1].num)) + 25);
-        sprintf(result, "for(int i=0;i<%s;i++){\n\t\t%s\t}", (yyvsp[-3].num), (yyvsp[-1].num));
-        (yyval.num) = result;
+        char *result = malloc(strlen((yyvsp[-3].str)) + strlen((yyvsp[-1].str)) + 25);
+        sprintf(result, "for(int i=0;i<%s;i++){\n\t\t%s\t}", (yyvsp[-3].str), (yyvsp[-1].str));
+        (yyval.str) = result;
     }
-#line 1236 "trabalho.tab.c"
+#line 1233 "trabalho.tab.c"
     break;
 
 
-#line 1240 "trabalho.tab.c"
+#line 1237 "trabalho.tab.c"
 
       default: break;
     }
@@ -1429,7 +1426,7 @@ yyreturnlab:
   return yyresult;
 }
 
-#line 124 "trabalho.y"
+#line 121 "trabalho.y"
 
 
 int main(int argc, char** argv){

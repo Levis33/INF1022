@@ -1,10 +1,8 @@
 %option yywrap
 
     /*
-
-    Bruno Coutinho -
+    Bruno Coutinho - 1910392
     Thiago Levis Alamber Rodrigues - 1812899
-
     */
 
     #include <stdio.h>
@@ -25,4 +23,4 @@ SENAO       return (SENAO);
 "("         return (AP);
 ")"         return (FP);
 "="         return (IGUAL);
-[a-zA-Z]+	{ yylval.num=strdup(yytext); return (ID); }
+[a-zA-Z]+	{ yylval.str=strdup(yytext); return (ID); }

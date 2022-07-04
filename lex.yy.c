@@ -693,7 +693,7 @@ YY_DECL
 		}
 
 	{
-#line 13 "trabalho.l"
+#line 11 "trabalho.l"
 
 
 #line 700 "lex.yy.c"
@@ -755,82 +755,82 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 15 "trabalho.l"
+#line 13 "trabalho.l"
 return (ENTRADA);
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 16 "trabalho.l"
+#line 14 "trabalho.l"
 return (SAIDA);
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 17 "trabalho.l"
+#line 15 "trabalho.l"
 return (FIM);
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 18 "trabalho.l"
+#line 16 "trabalho.l"
 return (ENQUANTO);
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 19 "trabalho.l"
+#line 17 "trabalho.l"
 return (FACA);
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 20 "trabalho.l"
+#line 18 "trabalho.l"
 return (VEZES);
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 21 "trabalho.l"
+#line 19 "trabalho.l"
 return (INC);
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 22 "trabalho.l"
+#line 20 "trabalho.l"
 return (ZERA);
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 23 "trabalho.l"
+#line 21 "trabalho.l"
 return (SE);
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 24 "trabalho.l"
+#line 22 "trabalho.l"
 return (ENTAO);
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 25 "trabalho.l"
+#line 23 "trabalho.l"
 return (SENAO);
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 26 "trabalho.l"
+#line 24 "trabalho.l"
 return (AP);
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 27 "trabalho.l"
+#line 25 "trabalho.l"
 return (FP);
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 28 "trabalho.l"
+#line 26 "trabalho.l"
 return (IGUAL);
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 29 "trabalho.l"
-{ yylval.num=strdup(yytext); return (ID); }
+#line 27 "trabalho.l"
+{ yylval.str=strdup(yytext); return (ID); }
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 30 "trabalho.l"
+#line 28 "trabalho.l"
 ECHO;
 	YY_BREAK
 #line 837 "lex.yy.c"
@@ -1838,4 +1838,4 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 30 "trabalho.l"
+#line 28 "trabalho.l"

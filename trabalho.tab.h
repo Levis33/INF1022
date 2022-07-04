@@ -77,9 +77,9 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 22 "trabalho.y"
+#line 19 "trabalho.y"
 
-	char *num;
+	char *str;
 
 #line 85 "trabalho.tab.h"
 

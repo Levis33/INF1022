@@ -1,11 +1,8 @@
 %{
 
     /*
-
-    Bruno Coutinho -
+    Bruno Coutinho - 1910392
     Thiago Levis Alamber Rodrigues - 1812899
-
-
     */
 
 	#include <stdio.h>
@@ -20,10 +17,10 @@
 %}
 
 %union{
-	char *num;
+	char *str;
 }
 
-%type <num> cmd cmds varlist
+%type <str> cmd cmds varlist
 %token ENTRADA
 %token SAIDA
 %token FIM
@@ -38,7 +35,7 @@
 %token AP
 %token FP
 %token IGUAL
-%token <num> ID
+%token <str> ID
 
 
 
