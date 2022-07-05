@@ -46,8 +46,8 @@ program	: ENTRADA varlist SAIDA varlist cmds FIM {
         exit(1);
     } 
 
-    char *result = malloc(strlen($2) + strlen($4) + strlen($5) + 42);
-    sprintf(result, "int saida(int %s){\n\tint %s;\n\t%s\t\n\treturn %s;\n}", $2, $4, $5, $4);
+    char *result = malloc(strlen($2) + strlen($4) + strlen($5) + 38);
+    sprintf(result, "int saida(int %s){\nint %s;\n%s\nreturn %s;\n}", $2, $4, $5, $4);
     fprintf(f, "%s", result);
     fclose(f);
 
@@ -80,8 +80,8 @@ cmds : cmd cmds {
 ;
 
 cmd : ENQUANTO ID FACA cmds FIM {
-    char *result = malloc(strlen($2) + strlen($4) + 17);
-    sprintf(result,"while(%s){\n\t%s}\n", $2, $4);
+    char *result = malloc(strlen($2) + strlen($4) + 16);
+    sprintf(result,"while(%s){\n%s}\n", $2, $4);
     $$ = result;
 
     }
@@ -102,18 +102,18 @@ cmd : ENQUANTO ID FACA cmds FIM {
 		$$ = result; 
 		}
     | SE ID ENTAO cmds FIM{
-        char *result = malloc(strlen($2) + strlen($4) + 9);
-        sprintf(result, "if(%s){\n\t%s}", $2, $4);
+        char *result = malloc(strlen($2) + strlen($4) + 8);
+        sprintf(result, "if(%s){\n%s}", $2, $4);
         $$ = result;
     } 
     | SE ID ENTAO cmds SENAO cmds FIM{
-        char *result = malloc(strlen($2) + strlen($4) + strlen($6) + 25);
-        sprintf(result, "if(%s){\n\t%s\t}\n\telse{\n\t\t%s}", $2, $4, $6);
+        char *result = malloc(strlen($2) + strlen($4) + strlen($6) + 20);
+        sprintf(result, "if(%s){\n%s}\nelse{\n%s}", $2, $4, $6);
         $$ = result;
     } 
     | FACA ID VEZES cmds FIM{
-        char *result = malloc(strlen($2) + strlen($4) + 25);
-        sprintf(result, "for(int i=0;i<%s;i++){\n\t\t%s\t}", $2, $4);
+        char *result = malloc(strlen($2) + strlen($4) + 22);
+        sprintf(result, "for(int i=0;i<%s;i++){\n%s}", $2, $4);
         $$ = result;
     }
 ;
