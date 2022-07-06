@@ -20,7 +20,10 @@ ZERA        return (ZERA);
 SE          return (SE);
 ENTAO       return (ENTAO);
 SENAO       return (SENAO);
+ELEVADO     return (ELEVADO);
 "("         return (AP);
 ")"         return (FP);
 "="         return (IGUAL);
+"*"         return (MULTIPLICA);
+"/"         return (DIVISAO);
 [a-zA-Z]+	{ yylval.str=strdup(yytext); return (ID); }

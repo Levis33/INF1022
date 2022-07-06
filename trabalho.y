@@ -35,6 +35,9 @@
 %token AP
 %token FP
 %token IGUAL
+%token MULTIPLICA
+%token DIVISAO
+%token ELEVADO
 %token <str> ID
 
 
@@ -46,8 +49,8 @@ program	: ENTRADA varlist SAIDA varlist cmds FIM {
         exit(1);
     } 
 
-    char *result = malloc(strlen($2) + strlen($4) + strlen($5) + 38);
-    sprintf(result, "int saida(int %s){\nint %s;\n%s\nreturn %s;\n}", $2, $4, $5, $4);
+    char *result = malloc(strlen($2) + strlen($4) + strlen($5) + 58);
+    sprintf(result, "#include <math.h>\nint saida(int %s){\nint %s;\n%s\nreturn %s;\n}", $2, $4, $5, $4);
     fprintf(f, "%s", result);
     fclose(f);
 
@@ -83,17 +86,32 @@ cmd : INC AP ID FP {
         char * result = malloc(strlen($3) + 8);
         sprintf(result, "%s += 1;\n", $3);
         $$ = result;
-		}
+	}
     | ID IGUAL ID {
         char *result =malloc(strlen($1) + strlen($3) + 6);
         sprintf(result, "%s = %s;\n", $1, $3); 
 		$$ = result;
-		}
+	}
     | ZERA AP ID FP { 
         char *result=malloc(strlen($3) + 7);
         sprintf(result, "%s = 0;\n", $3);
 		$$ = result; 
-		}
+	}
+    | ID MULTIPLICA ID{
+        char * result = malloc(strlen($1) + strlen($3) + 5);
+        sprintf(result, "%s=%s*%s;\n", $1, $1, $3);
+        $$ = result;
+    }
+    | ID DIVISAO ID{
+        char * result = malloc(strlen($1) + strlen($3) + 5);
+        sprintf(result, "%s=%s/%s;\n", $1, $1, $3);
+        $$ = result;
+    }
+    | ID ELEVADO ID{
+        char * result = malloc(strlen($3) + strlen($1) + 11);
+        sprintf(result, "%s=pow(%s,%s);\n", $1, $1, $3);
+        $$ = result;
+    }
     | SE ID ENTAO cmds FIM{
         char *result = malloc(strlen($2) + strlen($4) + 9);
         sprintf(result, "if(%s){\n\t%s}", $2, $4);
