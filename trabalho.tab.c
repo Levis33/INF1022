@@ -130,12 +130,15 @@ enum yysymbol_kind_t
   YYSYMBOL_AP = 14,                        /* AP  */
   YYSYMBOL_FP = 15,                        /* FP  */
   YYSYMBOL_IGUAL = 16,                     /* IGUAL  */
-  YYSYMBOL_ID = 17,                        /* ID  */
-  YYSYMBOL_YYACCEPT = 18,                  /* $accept  */
-  YYSYMBOL_program = 19,                   /* program  */
-  YYSYMBOL_varlist = 20,                   /* varlist  */
-  YYSYMBOL_cmds = 21,                      /* cmds  */
-  YYSYMBOL_cmd = 22                        /* cmd  */
+  YYSYMBOL_MULTIPLICA = 17,                /* MULTIPLICA  */
+  YYSYMBOL_DIVISAO = 18,                   /* DIVISAO  */
+  YYSYMBOL_ELEVADO = 19,                   /* ELEVADO  */
+  YYSYMBOL_ID = 20,                        /* ID  */
+  YYSYMBOL_YYACCEPT = 21,                  /* $accept  */
+  YYSYMBOL_program = 22,                   /* program  */
+  YYSYMBOL_varlist = 23,                   /* varlist  */
+  YYSYMBOL_cmds = 24,                      /* cmds  */
+  YYSYMBOL_cmd = 25                        /* cmd  */
 };
 typedef enum yysymbol_kind_t yysymbol_kind_t;
 
@@ -463,19 +466,19 @@ union yyalloc
 /* YYFINAL -- State number of the termination state.  */
 #define YYFINAL  5
 /* YYLAST -- Last index in YYTABLE.  */
-#define YYLAST   43
+#define YYLAST   49
 
 /* YYNTOKENS -- Number of terminals.  */
-#define YYNTOKENS  18
+#define YYNTOKENS  21
 /* YYNNTS -- Number of nonterminals.  */
 #define YYNNTS  5
 /* YYNRULES -- Number of rules.  */
-#define YYNRULES  13
+#define YYNRULES  16
 /* YYNSTATES -- Number of states.  */
-#define YYNSTATES  43
+#define YYNSTATES  49
 
 /* YYMAXUTOK -- Last valid token kind.  */
-#define YYMAXUTOK   272
+#define YYMAXUTOK   275
 
 
 /* YYTRANSLATE(TOKEN-NUM) -- Symbol number corresponding to TOKEN-NUM
@@ -516,15 +519,15 @@ static const yytype_int8 yytranslate[] =
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     1,     2,     3,     4,
        5,     6,     7,     8,     9,    10,    11,    12,    13,    14,
-      15,    16,    17
+      15,    16,    17,    18,    19,    20
 };
 
 #if YYDEBUG
 /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
-static const yytype_int8 yyrline[] =
+static const yytype_uint8 yyrline[] =
 {
-       0,    43,    43,    59,    65,    72,    77,    82,    89,    94,
-      99,   104,   109,   114
+       0,    46,    46,    62,    68,    75,    80,    85,    90,    95,
+     100,   105,   110,   115,   120,   125,   130
 };
 #endif
 
@@ -542,8 +545,8 @@ static const char *const yytname[] =
 {
   "\"end of file\"", "error", "\"invalid token\"", "ENTRADA", "SAIDA",
   "FIM", "ENQUANTO", "FACA", "VEZES", "INC", "ZERA", "SE", "ENTAO",
-  "SENAO", "AP", "FP", "IGUAL", "ID", "$accept", "program", "varlist",
-  "cmds", "cmd", YY_NULLPTR
+  "SENAO", "AP", "FP", "IGUAL", "MULTIPLICA", "DIVISAO", "ELEVADO", "ID",
+  "$accept", "program", "varlist", "cmds", "cmd", YY_NULLPTR
 };
 
 static const char *
@@ -553,7 +556,7 @@ yysymbol_name (yysymbol_kind_t yysymbol)
 }
 #endif
 
-#define YYPACT_NINF (-17)
+#define YYPACT_NINF (-20)
 
 #define yypact_value_is_default(Yyn) \
   ((Yyn) == YYPACT_NINF)
@@ -567,11 +570,11 @@ yysymbol_name (yysymbol_kind_t yysymbol)
    STATE-NUM.  */
 static const yytype_int8 yypact[] =
 {
-       0,   -13,     5,   -17,    -2,   -17,   -13,   -17,    10,   -11,
-     -10,    -6,    -1,    -5,     2,    17,    19,    16,    23,    15,
-      18,    21,    20,   -17,     2,   -17,    19,    19,    24,    25,
-      19,   -17,    29,    33,   -17,   -17,    -4,   -17,   -17,   -17,
-      19,    36,   -17
+       0,   -19,     4,   -20,    -2,   -20,   -19,   -20,    -1,    -9,
+      -8,     8,    17,    -4,    10,    27,    14,    26,    28,    15,
+      18,    25,    19,    20,    21,    22,   -20,    10,   -20,    14,
+      14,    29,    30,    14,   -20,   -20,   -20,   -20,    38,    41,
+     -20,   -20,     2,   -20,   -20,   -20,    14,    42,   -20
 };
 
 /* YYDEFACT[STATE-NUM] -- Default reduction number in state STATE-NUM.
@@ -581,15 +584,15 @@ static const yytype_int8 yydefact[] =
 {
        0,     0,     0,     4,     0,     1,     0,     3,     0,     0,
        0,     0,     0,     0,     3,     0,     6,     0,     0,     0,
-       0,     0,     0,     2,     0,     5,     0,     0,     0,     0,
-       0,     9,     0,     0,     8,    10,     0,     7,    13,    11,
-       0,     0,    12
+       0,     0,     0,     0,     0,     0,     2,     0,     5,     0,
+       0,     0,     0,     0,     8,    10,    11,    12,     0,     0,
+       7,     9,     0,    16,    15,    13,     0,     0,    14
 };
 
 /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int8 yypgoto[] =
 {
-     -17,   -17,    37,   -16,   -17
+     -20,   -20,    43,   -16,   -20
 };
 
 /* YYDEFGOTO[NTERM-NUM].  */
@@ -603,45 +606,45 @@ static const yytype_int8 yydefgoto[] =
    number is the opposite.  If YYTABLE_NINF, syntax error.  */
 static const yytype_int8 yytable[] =
 {
-      25,    39,     6,     1,     3,     5,    17,    18,    19,    40,
-      32,    33,    21,    20,    36,     7,     9,    10,    22,    11,
-      12,    13,    23,    26,    41,     9,    10,    14,    11,    12,
-      13,    27,    28,    30,    37,    29,    24,    31,    38,    34,
-      35,    42,     0,     8
+      28,     3,     6,     1,     5,     9,    10,    45,    11,    12,
+      13,    17,    18,    38,    39,    46,    21,    42,     7,    14,
+       9,    10,    19,    11,    12,    13,    22,    23,    24,    25,
+      47,    20,    26,    29,    27,    31,    30,    33,    32,    34,
+      35,    36,    37,    43,    40,    41,    44,    48,     0,     8
 };
 
 static const yytype_int8 yycheck[] =
 {
-      16,     5,     4,     3,    17,     0,    17,    17,    14,    13,
-      26,    27,    17,    14,    30,    17,     6,     7,    16,     9,
-      10,    11,     5,     7,    40,     6,     7,    17,     9,    10,
-      11,     8,    17,    12,     5,    17,    17,    17,     5,    15,
-      15,     5,    -1,     6
+      16,    20,     4,     3,     0,     6,     7,     5,     9,    10,
+      11,    20,    20,    29,    30,    13,    20,    33,    20,    20,
+       6,     7,    14,     9,    10,    11,    16,    17,    18,    19,
+      46,    14,     5,     7,    20,    20,     8,    12,    20,    20,
+      20,    20,    20,     5,    15,    15,     5,     5,    -1,     6
 };
 
 /* YYSTOS[STATE-NUM] -- The symbol kind of the accessing symbol of
    state STATE-NUM.  */
 static const yytype_int8 yystos[] =
 {
-       0,     3,    19,    17,    20,     0,     4,    17,    20,     6,
-       7,     9,    10,    11,    17,    21,    22,    17,    17,    14,
-      14,    17,    16,     5,    17,    21,     7,     8,    17,    17,
-      12,    17,    21,    21,    15,    15,    21,     5,     5,     5,
-      13,    21,     5
+       0,     3,    22,    20,    23,     0,     4,    20,    23,     6,
+       7,     9,    10,    11,    20,    24,    25,    20,    20,    14,
+      14,    20,    16,    17,    18,    19,     5,    20,    24,     7,
+       8,    20,    20,    12,    20,    20,    20,    20,    24,    24,
+      15,    15,    24,     5,     5,     5,    13,    24,     5
 };
 
 /* YYR1[RULE-NUM] -- Symbol kind of the left-hand side of rule RULE-NUM.  */
 static const yytype_int8 yyr1[] =
 {
-       0,    18,    19,    20,    20,    21,    21,    22,    22,    22,
-      22,    22,    22,    22
+       0,    21,    22,    23,    23,    24,    24,    25,    25,    25,
+      25,    25,    25,    25,    25,    25,    25
 };
 
 /* YYR2[RULE-NUM] -- Number of symbols on the right-hand side of rule RULE-NUM.  */
 static const yytype_int8 yyr2[] =
 {
-       0,     2,     6,     2,     1,     2,     1,     5,     4,     3,
-       4,     5,     7,     5
+       0,     2,     6,     2,     1,     2,     1,     4,     3,     4,
+       3,     3,     3,     5,     7,     5,     5
 };
 
 
@@ -1105,15 +1108,15 @@ yyreduce:
   switch (yyn)
     {
   case 2: /* program: ENTRADA varlist SAIDA varlist cmds FIM  */
-#line 43 "trabalho.y"
+#line 46 "trabalho.y"
                                                  {
     FILE *f = fopen("saida.c", "w");
     if (f == NULL){
         exit(1);
     } 
 
-    char *result = malloc(strlen((yyvsp[-4].str)) + strlen((yyvsp[-2].str)) + strlen((yyvsp[-1].str)) + 42);
-    sprintf(result, "int saida(int %s){\n\tint %s;\n\t%s\t\n\treturn %s;\n}", (yyvsp[-4].str), (yyvsp[-2].str), (yyvsp[-1].str), (yyvsp[-2].str));
+    char *result = malloc(strlen((yyvsp[-4].str)) + strlen((yyvsp[-2].str)) + strlen((yyvsp[-1].str)) + 58);
+    sprintf(result, "#include <math.h>\nint saida(int %s){\nint %s;\n%s\nreturn %s;\n}", (yyvsp[-4].str), (yyvsp[-2].str), (yyvsp[-1].str), (yyvsp[-2].str));
     fprintf(f, "%s", result);
     fclose(f);
 
@@ -1121,119 +1124,149 @@ yyreduce:
 
     exit(0);
 }
-#line 1125 "trabalho.tab.c"
+#line 1128 "trabalho.tab.c"
     break;
 
   case 3: /* varlist: varlist ID  */
-#line 59 "trabalho.y"
+#line 62 "trabalho.y"
                      {
 
     char *result = malloc(strlen((yyvsp[-1].str)) + strlen((yyvsp[0].str)) + 6);
     sprintf(result, "%s, int %s", (yyvsp[-1].str), (yyvsp[0].str));
     (yyval.str) = result;
   }
-#line 1136 "trabalho.tab.c"
+#line 1139 "trabalho.tab.c"
     break;
 
   case 4: /* varlist: ID  */
-#line 65 "trabalho.y"
+#line 68 "trabalho.y"
        {
 		(yyval.str) = (yyvsp[0].str);
 	}
-#line 1144 "trabalho.tab.c"
+#line 1147 "trabalho.tab.c"
     break;
 
   case 5: /* cmds: cmd cmds  */
-#line 72 "trabalho.y"
+#line 75 "trabalho.y"
                 {
     char *result = malloc(strlen((yyvsp[-1].str)) + strlen((yyvsp[0].str)) + 1);
     sprintf(result, "%s %s", (yyvsp[-1].str), (yyvsp[0].str));
     (yyval.str) = result;
   }
-#line 1154 "trabalho.tab.c"
+#line 1157 "trabalho.tab.c"
     break;
 
   case 6: /* cmds: cmd  */
-#line 77 "trabalho.y"
+#line 80 "trabalho.y"
         {
         (yyval.str) = (yyvsp[0].str);
     }
-#line 1162 "trabalho.tab.c"
+#line 1165 "trabalho.tab.c"
     break;
 
-  case 7: /* cmd: ENQUANTO ID FACA cmds FIM  */
-#line 82 "trabalho.y"
-                                {
-    char *result = malloc(strlen((yyvsp[-3].str)) + strlen((yyvsp[-1].str)) + 17);
-    sprintf(result,"while(%s){\n\t%s}\n", (yyvsp[-3].str), (yyvsp[-1].str));
-    (yyval.str) = result;
-
-    }
-#line 1173 "trabalho.tab.c"
-    break;
-
-  case 8: /* cmd: INC AP ID FP  */
-#line 89 "trabalho.y"
+  case 7: /* cmd: INC AP ID FP  */
+#line 85 "trabalho.y"
                    {
         char * result = malloc(strlen((yyvsp[-1].str)) + 8);
         sprintf(result, "%s += 1;\n", (yyvsp[-1].str));
         (yyval.str) = result;
-		}
-#line 1183 "trabalho.tab.c"
+	}
+#line 1175 "trabalho.tab.c"
     break;
 
-  case 9: /* cmd: ID IGUAL ID  */
-#line 94 "trabalho.y"
+  case 8: /* cmd: ID IGUAL ID  */
+#line 90 "trabalho.y"
                   {
         char *result =malloc(strlen((yyvsp[-2].str)) + strlen((yyvsp[0].str)) + 6);
         sprintf(result, "%s = %s;\n", (yyvsp[-2].str), (yyvsp[0].str)); 
 		(yyval.str) = result;
-		}
-#line 1193 "trabalho.tab.c"
+	}
+#line 1185 "trabalho.tab.c"
     break;
 
-  case 10: /* cmd: ZERA AP ID FP  */
-#line 99 "trabalho.y"
+  case 9: /* cmd: ZERA AP ID FP  */
+#line 95 "trabalho.y"
                     { 
         char *result=malloc(strlen((yyvsp[-1].str)) + 7);
         sprintf(result, "%s = 0;\n", (yyvsp[-1].str));
 		(yyval.str) = result; 
-		}
-#line 1203 "trabalho.tab.c"
+	}
+#line 1195 "trabalho.tab.c"
     break;
 
-  case 11: /* cmd: SE ID ENTAO cmds FIM  */
-#line 104 "trabalho.y"
+  case 10: /* cmd: ID MULTIPLICA ID  */
+#line 100 "trabalho.y"
+                      {
+        char * result = malloc(strlen((yyvsp[-2].str)) + strlen((yyvsp[0].str)) + 5);
+        sprintf(result, "%s=%s*%s;\n", (yyvsp[-2].str), (yyvsp[-2].str), (yyvsp[0].str));
+        (yyval.str) = result;
+    }
+#line 1205 "trabalho.tab.c"
+    break;
+
+  case 11: /* cmd: ID DIVISAO ID  */
+#line 105 "trabalho.y"
+                   {
+        char * result = malloc(strlen((yyvsp[-2].str)) + strlen((yyvsp[0].str)) + 5);
+        sprintf(result, "%s=%s/%s;\n", (yyvsp[-2].str), (yyvsp[-2].str), (yyvsp[0].str));
+        (yyval.str) = result;
+    }
+#line 1215 "trabalho.tab.c"
+    break;
+
+  case 12: /* cmd: ID ELEVADO ID  */
+#line 110 "trabalho.y"
+                   {
+        char * result = malloc(strlen((yyvsp[0].str)) + strlen((yyvsp[-2].str)) + 11);
+        sprintf(result, "%s=pow(%s,%s);\n", (yyvsp[-2].str), (yyvsp[-2].str), (yyvsp[0].str));
+        (yyval.str) = result;
+    }
+#line 1225 "trabalho.tab.c"
+    break;
+
+  case 13: /* cmd: SE ID ENTAO cmds FIM  */
+#line 115 "trabalho.y"
                           {
         char *result = malloc(strlen((yyvsp[-3].str)) + strlen((yyvsp[-1].str)) + 9);
         sprintf(result, "if(%s){\n\t%s}", (yyvsp[-3].str), (yyvsp[-1].str));
         (yyval.str) = result;
     }
-#line 1213 "trabalho.tab.c"
+#line 1235 "trabalho.tab.c"
     break;
 
-  case 12: /* cmd: SE ID ENTAO cmds SENAO cmds FIM  */
-#line 109 "trabalho.y"
+  case 14: /* cmd: SE ID ENTAO cmds SENAO cmds FIM  */
+#line 120 "trabalho.y"
                                      {
-        char *result = malloc(strlen((yyvsp[-5].str)) + strlen((yyvsp[-3].str)) + strlen((yyvsp[-1].str)) + 25);
-        sprintf(result, "if(%s){\n\t%s\t}\n\telse{\n\t\t%s}", (yyvsp[-5].str), (yyvsp[-3].str), (yyvsp[-1].str));
+        char *result = malloc(strlen((yyvsp[-5].str)) + strlen((yyvsp[-3].str)) + strlen((yyvsp[-1].str)) + 21);
+        sprintf(result, "if(%s){\n\t%s}\nelse{\n\t%s}", (yyvsp[-5].str), (yyvsp[-3].str), (yyvsp[-1].str));
         (yyval.str) = result;
     }
-#line 1223 "trabalho.tab.c"
+#line 1245 "trabalho.tab.c"
     break;
 
-  case 13: /* cmd: FACA ID VEZES cmds FIM  */
-#line 114 "trabalho.y"
+  case 15: /* cmd: FACA ID VEZES cmds FIM  */
+#line 125 "trabalho.y"
                             {
-        char *result = malloc(strlen((yyvsp[-3].str)) + strlen((yyvsp[-1].str)) + 25);
-        sprintf(result, "for(int i=0;i<%s;i++){\n\t\t%s\t}", (yyvsp[-3].str), (yyvsp[-1].str));
+        char *result = malloc(strlen((yyvsp[-3].str)) + strlen((yyvsp[-1].str)) + 23);
+        sprintf(result, "for(int i=0;i<%s;i++){\n\t%s}", (yyvsp[-3].str), (yyvsp[-1].str));
         (yyval.str) = result;
     }
-#line 1233 "trabalho.tab.c"
+#line 1255 "trabalho.tab.c"
+    break;
+
+  case 16: /* cmd: ENQUANTO ID FACA cmds FIM  */
+#line 130 "trabalho.y"
+                                {
+    char *result = malloc(strlen((yyvsp[-3].str)) + strlen((yyvsp[-1].str)) + 16);
+    sprintf(result,"while(%s){\n%s}\n", (yyvsp[-3].str), (yyvsp[-1].str));
+    (yyval.str) = result;
+
+    }
+#line 1266 "trabalho.tab.c"
     break;
 
 
-#line 1237 "trabalho.tab.c"
+#line 1270 "trabalho.tab.c"
 
       default: break;
     }
@@ -1426,7 +1459,7 @@ yyreturnlab:
   return yyresult;
 }
 
-#line 121 "trabalho.y"
+#line 138 "trabalho.y"
 
 
 int main(int argc, char** argv){

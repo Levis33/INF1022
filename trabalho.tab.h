@@ -68,7 +68,10 @@ extern int yydebug;
     AP = 269,                      /* AP  */
     FP = 270,                      /* FP  */
     IGUAL = 271,                   /* IGUAL  */
-    ID = 272                       /* ID  */
+    MULTIPLICA = 272,              /* MULTIPLICA  */
+    DIVISAO = 273,                 /* DIVISAO  */
+    ELEVADO = 274,                 /* ELEVADO  */
+    ID = 275                       /* ID  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -81,7 +84,7 @@ union YYSTYPE
 
 	char *str;
 
-#line 85 "trabalho.tab.h"
+#line 88 "trabalho.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;
